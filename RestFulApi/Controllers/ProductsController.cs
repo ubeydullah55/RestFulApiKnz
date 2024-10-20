@@ -39,10 +39,74 @@ namespace RestFulApi.Controllers
             return Ok();
         }
         [HttpPut("{id:int}")]
-        public ActionResult UpdatePost(Products products,int id) 
+        public ActionResult UpdatePost(Products products, int id)
         {
-            var response = _productsService.UpdatePost(products,id);
-            return Ok(); 
+            var response = _productsService.UpdatePost(products, id);
+            return Ok();
         }
+        // [HttpPut("update/{id:int}")]
+        //public ActionResult UpdatePost(int id, [FromForm] Products products, [FromForm] IFormFile image)
+        //{
+        //    // Resim dosyasını kaydet
+        //    if (image != null && image.Length > 0)
+        //    {
+        //        var uploadsFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+        //        if (!Directory.Exists(uploadsFolderPath))
+        //        {
+        //            Directory.CreateDirectory(uploadsFolderPath);
+        //        }
+
+        //        var uniqueFileName = Path.GetFileNameWithoutExtension(image.FileName) + "_" + Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+        //        var filePath = Path.Combine(uploadsFolderPath, uniqueFileName);
+
+        //        using (var stream = new FileStream(filePath, FileMode.Create))
+        //        {
+        //            image.CopyTo(stream);
+        //        }
+
+        //        // Ürünün resim dosyası ismini güncelle
+        //        products.imgfile = uniqueFileName;
+        //    }
+
+        //    // Ürün bilgilerini güncelle
+        //    var response = _productsService.UpdatePost(products, id);
+        //    return Ok(response);
+        //}
+
+        //[HttpPost("upload")]
+        //[Consumes("multipart/form-data")]
+        //public IActionResult UploadImage([FromForm] IFormFile file)
+        //{
+        //    // Eğer dosya yoksa hata döndür
+        //    if (file == null || file.Length == 0)
+        //    {
+        //        return BadRequest(new { errors = new { image = new[] { "Yüklemek için bir dosya seçilmedi." } } });
+        //    }
+
+        //    // Sunucudaki dizin yolunu belirleyin (örn: wwwroot/images)
+        //    var uploadsFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+
+        //    // Eğer dizin yoksa oluştur
+        //    if (!Directory.Exists(uploadsFolderPath))
+        //    {
+        //        Directory.CreateDirectory(uploadsFolderPath);
+        //    }
+
+        //    // Benzersiz dosya adını belirle (örneğin: zaman damgası ile)
+        //    var uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+
+        //    // Dosya yolunu belirleyin
+        //    var filePath = Path.Combine(uploadsFolderPath, uniqueFileName);
+
+        //    // Dosyayı belirtilen dizine kaydet
+        //    using (var fileStream = new FileStream(filePath, FileMode.Create))
+        //    {
+        //        file.CopyTo(fileStream);
+        //    }
+
+        //    // Başarılı sonuç döndür
+        //    return Ok(new { message = "Dosya başarıyla yüklendi.", fileName = uniqueFileName });
+        //}
+
     }
 }

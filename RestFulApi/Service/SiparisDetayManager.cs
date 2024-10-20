@@ -26,7 +26,7 @@ namespace RestFulApi.Service
         {
             var deleteModel = _repository.GetById(id);
             return _repository.Delete(deleteModel);
-        }   
+        }
 
         public SiparisDetay GetPost(int id)
         {
