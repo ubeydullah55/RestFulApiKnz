@@ -22,7 +22,7 @@ namespace imageApi.Controllers
             {
                 try
                 {
-                    string imagesDirectory = Path.Combine(Directory.GetCurrentDirectory(),"..","..", "httpdocs", "assets", "cozastore-master", "images", "products");
+                    string imagesDirectory = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot","images", "products");
                     if (!Directory.Exists(imagesDirectory))
                     {
                         Directory.CreateDirectory(imagesDirectory);
